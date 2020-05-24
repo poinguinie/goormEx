@@ -1,8 +1,9 @@
-package package_test_3
+package package_test_4
 
 fun main(args: Array<String>) {
 	val sean = Developer("Sean")
 	println()
+	
 	val p1 = PersonByOther("홍길동",30)
 	println()
 	val p2 = PersonByOther("둘리")
@@ -11,7 +12,46 @@ fun main(args: Array<String>) {
 	c1.Inside().test()
 	println()
 	
+	val user1 = User(1,"Kildong",30)
+	// user1.id = 2
+	user1.age = 35 // setter
+	println("user1.age = ${user1.age}") // getter
+	println()
+	
+	val user2 = User(2)
+	print("Enter the your Name : ")
+	var name: String? = readLine()
+	print("Enter the your Age : ")
+	var age: Int = readLine()!!.toInt()
+	user2.name = name
+	user2.age = age	
+	println()
+	
+	
 }
+//getter & setter
+class User(_id: Int, _name: String = "None", _age: Int = 0) {
+	// property
+	private var tmp: String?= null
+	val id: Int = _id
+		get() = field
+	var name: String? = _name
+		get() = field
+		set(tmp) {
+			if (tmp!!.length >= 10) {
+				println("Too Long!")
+				return
+			}
+			field = tmp
+		}
+	
+	var age: Int = _age
+		get() = field
+		set(value) {
+			field = value
+		}
+}
+
 //createInnerClass
 open class Base {
 	open val x: Int = 1
