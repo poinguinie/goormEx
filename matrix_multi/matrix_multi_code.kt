@@ -35,7 +35,7 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)) {
 		println()
 	}*/
 }
-class matrix (row:Int , column:Int) {
+class matrix (row:Int , column:Int) = with(Scanner(System.`in`)) {
 	var rowNumber: Int = row
 	var columnNumber: Int = column
 	var rowArray = Array(rowNumber, {Array(columnNumber, { 0 })})
