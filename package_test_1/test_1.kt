@@ -1,3 +1,5 @@
+package package_test_1
+
 fun main(args: Array<String>) {
 	//인라인 함수 shortFunc()의 내용이 복사되어 shortFunc으로 들어감
   	shortFunc(3) {println("First call:$it")}
