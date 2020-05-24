@@ -18,17 +18,39 @@ fun main(args: Array<String>) {
 	println("user1.age = ${user1.age}") // getter
 	println()
 	
-	val user2 = User(2)
+	val myDamas = CarModel("Damas 2010", VanImpl("100마력"))
+	val my350z = CarModel("350z 2008", SportImpl("350마력"))
+	
+	myDamas.carInfo()
+	my350z.carInfo()
+	
+	/*val user2 = User(2)
 	print("Enter the your Name : ")
 	var name: String? = readLine()
 	print("Enter the your Age : ")
 	var age: Int = readLine()!!.toInt()
 	user2.name = name
 	user2.age = age	
-	println()
+	println()*/
 	
 	
 }
+//DeligationOfBy
+interface Car {
+	fun go(): String
+}
+class VanImpl(val power: String): Car {
+	override fun go() = "은 짐을 적재하며 ${power}을 가집니다."
+}
+class SportImpl(val power: String): Car {
+	override fun go() = "은 경주용에 사용되며 ${power}을 가집니다."
+}
+class CarModel(val model: String, impl: Car): Car by impl {
+	fun carInfo() {
+		println("$model ${go()}")
+	}
+}
+
 //getter & setter
 class User(_id: Int, _name: String = "None", _age: Int = 0) {
 	// property
