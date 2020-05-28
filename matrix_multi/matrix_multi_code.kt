@@ -11,12 +11,15 @@ fun main(args: Array<String>) {
 	mat2.makeMatrix()
 	mat2.printMatrix()
 	
+	println("Plus Operator...")
 	val matPlus = mat1 + mat2
 	matPlus.printMatrix()
 	
+	println("Minus Operator...")
 	val matMinus = mat1 - mat2
 	matMinus.printMatrix()
 	
+	println("Times Operator...")
 	val matTimes = mat1 * mat2
 	matTimes.printMatrix()
 	
@@ -24,22 +27,32 @@ fun main(args: Array<String>) {
 
 
 
-class Matrix (row: Int, column: Int) {
+class Matrix (_row : Int = 0, _column: Int = 0) {
 	// Property (All Privated)
-	private var rowNumber: Int = row
-	private var columnNumber: Int = column
+	private var rowNumber: Int = _row
+	private var columnNumber: Int = _column
 	private var rowArray: Array<Array<Int>> = Array(rowNumber, {Array(columnNumber, { 0 })})
 	private val reader = Scanner(System.`in`)
 	// Initializing
 	init {
 		println("Matrix creates...")
+		if(rowNumber == 0 && columnNumber == 0) {
+			print("Enter the (row colomn) Ex) 3 5 : ")
+			rowNumber = reader.nextInt()
+			columnNumber = reader.nextInt()
+			rowArray = Array(rowNumber, {Array(columnNumber, { 0 })})
+		}
 	}
-	constructor():this() {
-		print("Enter the (row colomn) Ex) 3 5 : ")
-		rowNumber = reader.nextInt()
-		columnNumber = reader.nextInt()
-		rowArray = Array(rowNumber, {Array(columnNumber, { 0 })})
-	}
+	/* Constructor
+	constructor(): this(row, column) {
+		if (row != rowNumber && column != columnNumber) {
+			print("Enter the (row colomn) Ex) 3 5 : ")
+			rowNumber = reader.nextInt()
+			columnNumber = reader.nextInt()
+			rowArray = Array(rowNumber, {Array(columnNumber, { 0 })})
+		}
+		
+	}*/
 	// Input the Matrix Data
 	fun makeMatrix() {
 		for(i in 0..(rowNumber-1)) {
